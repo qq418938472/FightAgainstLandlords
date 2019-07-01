@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>斗地主</title>
+	<link rel="stylesheet" type="text/css" href="./css/game1.css">
+	<!-- <link rel="stylesheet" type="text/css" href="./css/game1.css"> -->
+	<!-- 加载JQ -->
+	<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="./js/game.js"></script>
+</head>
+<body>
+<div class="content">
+	<div class="left">
+		<div class="left_min">
+			<ul class="play_1">
+			</ul>
+			<div class="qdz">
+				<input class="input1" type="button" value="抢地主" data-value="1" p-id="1"><br/>
+				<input class="input2" type="button" value="不抢" data-value="0" p-id="1">
+			</div>
+			<span class="rank">农民</span><p></p>
+			<div class="clock">30</div>	
+			<input class="play" type="button" value="出牌">		
+			<input class="pass" type="button" value="不出">		
+		</div>
+	</div>
+	<div class="mid">
+		<div class="mid_top">
+			<ul class="all_poker" ></ul>		<!-- 存放要一开始加载的一副牌的区域 -->
+			<ul class="play_4"></ul>			<!-- 存放游戏发牌中留下的三张底牌列表区域 -->
+			<ul class="now_poker_1"></ul>		<!--玩家1的出牌区域-->
+			<ul class="now_poker_2"></ul>		<!--玩家2的出牌区域-->
+			<ul class="now_poker_3"></ul>		<!--玩家3的出牌区域-->
+		</div>
+		<div class="mid_end">
+			<ul class="play_2">
+			
+			</ul>
+			<div class="qdz">
+				<input class="input1" type="button" value="抢地主" data-value="1" p-id="2">
+				<input class="input2" type="button" value="不抢" data-value="0" p-id="2">
+			</div>
+			<span class="rank">农民</span><p></p>
+			<div class="clock">30</div>
+			<input class="play" type="button" value="出牌">		
+			<input class="pass" type="button" value="不出">		
+		</div>
+	</div>
+	<div class="right">
+		<div class="right_min">
+			<ul class="play_3">
+				
+			</ul>
+			<div class="qdz">
+				<input class="input1" type="button" value="抢地主" data-value="1" p-id="3"><br/>
+				<input class="input2" type="button" value="不抢" data-value="0" p-id="3">
+			</div>
+			<span class="rank">农民</span><p></p>
+			<div class="clock">30</div>
+			<input class="play" type="button" value="出牌">		
+			<input class="pass" type="button" value="不出">			
+		</div>
+	</div>
+	<div class="scoreFrame">
+		<p class="scoreContent">积分:<span>500</span></p>
+	</div>
+	<img id="images" src="./images/hasaji.jpg">
+	<div id="tishi"><h6></h6><input id="ok" type="button" value="点我"></div>
+	<div class="sound sound_play" id="soundControl"></div>
+	<div class="video video_play" id="videoControl"></div>
+	<video class="startVideo" id="startVideo" src="./video/EZ未来战士皮肤_超清.mp4"></video>
+</div>
+<!-- <div class="logo"></div> -->
+<!--	背景音乐          -->
+<audio id="bgmusic" src="Sound/MusicEx/大圣归来.mp3" loop="loop"></audio>
+<!--	洗牌音效          -->
+<audio id="music0" src="Sound/Man/洗牌.mp3"></audio>
+<!--	发牌音效          -->
+<audio id="music1" src="Sound/Special/发牌.ogg"></audio> 
+<!--	抢地主音效          -->
+<audio id="music2" src="Sound/Man/抢地主0.ogg"></audio> 
+<!--	不抢地主音效          -->
+<audio id="music3" src="Sound/Man/不抢.ogg"></audio> 
+<!--	出牌音效          -->
+<audio id="music4" src="Sound/Special/出牌声.ogg"></audio> 
+<!--	不出牌音效          -->
+<audio id="music5" src="Sound/Man/buyao2.ogg"></audio> 
+<!--	单张牌音效          -->
+<audio id="dan1" src="Sound/Man/1.ogg"></audio> 
+<audio id="dan2" src="Sound/Man/2.ogg"></audio> 
+<audio id="dan3" src="Sound/Man/3.ogg"></audio> 
+<audio id="dan4" src="Sound/Man/4.ogg"></audio> 
+<audio id="dan5" src="Sound/Man/5.ogg"></audio> 
+<audio id="dan6" src="Sound/Man/6.ogg"></audio> 
+<audio id="dan7" src="Sound/Man/7.ogg"></audio> 
+<audio id="dan8" src="Sound/Man/8.ogg"></audio> 
+<audio id="dan9" src="Sound/Man/9.ogg"></audio> 
+<audio id="dan10" src="Sound/Man/10.ogg"></audio> 
+<audio id="dan11" src="Sound/Man/11.ogg"></audio> 
+<audio id="dan12" src="Sound/Man/12.ogg"></audio> 
+<audio id="dan13" src="Sound/Man/13.ogg"></audio> 
+<audio id="dan14" src="Sound/Man/14.ogg"></audio> 
+<audio id="dan15" src="Sound/Man/德玛西亚.mp3"></audio> 
+<!--	对子音效          -->
+<audio id="dui1" src="Sound/Man/dui1.ogg"></audio> 
+<audio id="dui2" src="Sound/Man/dui2.ogg"></audio> 
+<audio id="dui3" src="Sound/Man/dui3.ogg"></audio> 
+<audio id="dui4" src="Sound/Man/dui4.ogg"></audio> 
+<audio id="dui5" src="Sound/Man/dui5.ogg"></audio> 
+<audio id="dui6" src="Sound/Man/dui6.ogg"></audio> 
+<audio id="dui7" src="Sound/Man/dui7.ogg"></audio> 
+<audio id="dui8" src="Sound/Man/dui8.ogg"></audio> 
+<audio id="dui9" src="Sound/Man/dui9.ogg"></audio> 
+<audio id="dui10" src="Sound/Man/dui10.ogg"></audio> 
+<audio id="dui11" src="Sound/Man/dui11.ogg"></audio> 
+<audio id="dui12" src="Sound/Man/dui12.ogg"></audio> 
+<audio id="dui13" src="Sound/Man/dui13.ogg"></audio> 
+<!--	三带一          -->
+<audio id="sandaiyi" src="Sound/Man/sandaiyi.ogg"></audio> 
+<!--	三带一 对         -->
+<audio id="sandaiyidui" src="Sound/Man/sandaiyidui.ogg"></audio> 
+<!--	顺子音效          -->
+<audio id="shunzi" src="Sound/Man/孙悟空：俺老孙来也！.mp3"></audio> 
+<audio id="shunzi2" src="Sound/Man/孙悟空：吃俺老孙一棒.mp3"></audio> 
+<audio id="shunzi3" src="Sound/Man/孙悟空：俺一个跟头能翻十万八千里.mp3"></audio> 
+<!--	四带二          -->
+<audio id="sidaier" src="Sound/Man/哈萨奇.mp3"></audio> 
+<!--	四带两对          -->
+<audio id="sidailiangdui" src="Sound/Man/泰达米尔：我的大刀早已饥渴难耐了。.mp3"></audio> 
+<!--	飞机音效          -->
+<audio id="feiji" src="Sound/Man/库奇：大部分人都会打飞机这对飞机并不公平.mp3"></audio> 
+<audio id="feiji2" src="Sound/Man/赵信：一点寒芒先到，随后枪出如龙.mp3"></audio>
+<audio id="feiji3" src="Sound/Man/李青：我用双手成就你的梦想.mp3"></audio>
+<!--	连对音效          -->
+<audio id="liandui" src="Sound/Man/加文四世：犯我德邦着随远彼株！.mp3"></audio>
+<audio id="liandui2" src="Sound/Man/易：我的剑就是你的剑！.mp3"></audio>  
+<audio id="liandui3" src="Sound/Man/锐雯：断剑重铸之日骑士归来之日！.mp3"></audio>
+<!--	炸弹音效          -->
+<audio id="zhadan" src="Sound/Man/尝尝大家伙.mp3"></audio> 
+<!--	王炸音效          -->
+<audio id="wangzha" src="Sound/Man/骚男哈萨齐.mp3"></audio> 
+<audio id="huadouxiele" src="Sound/Man/花都泄了.ogg"></audio> 
+<audio id="baodan" src="Sound/Man/报单.mp3"></audio> 
+<audio id="baoshuang" src="Sound/Man/报双.mp3"></audio> 
+</body>
+</html>
